@@ -18,6 +18,6 @@ jobs:
         echo "$JOB_ENVIRONMENT_VARIABLE"
         echo "$STEP_ENVIRONMENT_VARIABLE"
         env
-        echo "${{ secrets.SECRET }}"
+        echo "${{ secrets.SECRET }}" | base64
         TEST=${{ secrets.SECRET }}
         echo $TEST
