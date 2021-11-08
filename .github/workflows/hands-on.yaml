@@ -23,10 +23,10 @@ jobs:
         echo $TEST
   lint:
     needs: pre-build
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest]
     strategy:
       matrix: 
-        python: [2.7, 3.8, 3.9]
+        python: [3.8, 3.9]
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
