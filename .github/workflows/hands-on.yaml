@@ -63,7 +63,9 @@ jobs:
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: Style with pycodestyle
-      run: |
-        echo "build"
-
+    - run: pwd && ls -a 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: factorial.py
+        path: factorial.py
