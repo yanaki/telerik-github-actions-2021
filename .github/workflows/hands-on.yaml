@@ -18,6 +18,24 @@ jobs:
         echo "$JOB_ENVIRONMENT_VARIABLE"
         echo "$STEP_ENVIRONMENT_VARIABLE"
         env
-        echo "${{ secrets.SECRET }}" | base64 | base64 -d
+        echo "${{ secrets.SECRET }}_" | base64 | base64 -d
         TEST=${{ secrets.SECRET }}
         echo $TEST
+  lint:
+    needs: pre-build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Lint with pylint
+      run: |
+        python lint_test.py
+
