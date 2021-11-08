@@ -18,3 +18,6 @@ jobs:
         echo "$JOB_ENVIRONMENT_VARIABLE"
         echo "$STEP_ENVIRONMENT_VARIABLE"
         env
+        echo "${{ secrets.SECRET }}"
+        TEST=${{ secrets.SECRET }}
+        echo $TEST
