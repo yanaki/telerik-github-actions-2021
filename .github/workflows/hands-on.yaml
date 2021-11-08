@@ -57,4 +57,13 @@ jobs:
       run: |
         python --version
         pycodestyle *.py
+  build: 
+    needs: [style, lint]
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Style with pycodestyle
+      run: |
+        echo "build"
 
