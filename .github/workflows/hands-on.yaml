@@ -69,3 +69,24 @@ jobs:
       with:
         name: factorial.py
         path: factorial.py
+  unittest: 
+    needs: build
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: unittest
+      run: |
+        python --version
+        python3 -m doctest factorial.py
+  deploy: 
+    needs: unittest
+    runs-on: ubuntu-latest    
+    steps:
+    - name: deploy
+      run: |
+        echo "deploy"
